@@ -8,6 +8,10 @@ struct GetDataResponse {
   3: optional string errorMessage;
 }
 
+exception badMsg {
+  1: i16 errorCode
+  2: string msg
+}
 service APIService {
-  GetDataResponse GetData(1: GetDataRequest request);
+  GetDataResponse GetData(1: GetDataRequest request) throws(1: badMsg bm);
 }
